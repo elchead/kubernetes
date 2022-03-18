@@ -295,17 +295,17 @@ func (r *RemoteRuntimeService) CheckpointContainer(containerID string, options *
 
 func (r *RemoteRuntimeService) RestoreContainer(containerID string, options *runtimeapi.RestoreContainerOptions) error {
 	klog.V(10).Infof("[RemoteRuntimeService] RestoreContainer (containerID=%v, options=%v)", containerID, options)
-	ctx, cancel := getContextWithTimeout(r.timeout)
-	defer cancel()
+	// ctx, cancel := getContextWithTimeout(r.timeout)
+	// defer cancel()
 
-	_, err := r.runtimeClient.RestoreContainer(ctx, &runtimeapi.RestoreContainerRequest{
+	_, err := r.runtimeClient.RestoreContainer(context.TODO(), &runtimeapi.RestoreContainerRequest{
 		ContainerId: containerID,
 		Options:     options,
 	})
 	if err != nil {
 		klog.Errorf("RestoreContainer %q from runtime service failed: %v", containerID, err)
 	}
-	klog.V(10).Infof("[RemoteRuntimeService] RestoreContainer Response (containerID=%v)", containerID)
+	klog.V(10).Infof("[RemoteRuntimeService]  Response (containerID=%v)", containerID)
 
 	return nil
 }

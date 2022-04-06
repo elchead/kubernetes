@@ -34,6 +34,8 @@ func (m *manager) TriggerPodMigration(pod *v1.Pod) (Result, error) {
 	// TODO(schrej): fetch port from api
 	url := fmt.Sprintf("https://%s:10250/migrate/%s?containers=%s", clonePod.Status.HostIP, clonePod.GetUID(), strings.Join(containers, ","))
 	response, err := client.Get(url)
+	fmt.Println("RESP", response, err)
+	klog.Info("RESP", response, err)
 	if err != nil {
 		return Result{}, err
 	}

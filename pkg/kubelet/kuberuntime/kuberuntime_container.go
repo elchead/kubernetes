@@ -309,7 +309,7 @@ func (m *kubeGenericRuntimeManager) prepareMigrateContainer(container *v1.Contai
 	containerStatus := podStatus.FindContainerStatusByName(container.Name)
 
 	// If a container isn't running, it can't be live-migrated.
-	if containerStatus == nil || containerStatus.State != kubecontainer.ContainerStateRunning ||  {
+	if containerStatus == nil || containerStatus.State != kubecontainer.ContainerStateRunning  {
 		return nil
 	}
 

@@ -62,7 +62,7 @@ func getHTTPClient() (*http.Client, error) {
 		return nil, err
 	}
 	tlsConfig.InsecureSkipVerify = true //TODO REMOVE
-	c := &http.Client{}
+	c := &http.Client{Timeout: 50 * time.Minute}
 	c.Transport = &http.Transport{TLSClientConfig: tlsConfig}
 	return c, nil
 }

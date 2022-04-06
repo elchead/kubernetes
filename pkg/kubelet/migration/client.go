@@ -49,7 +49,7 @@ func (m *manager) TriggerPodMigration(pod *v1.Pod) (Result, error) {
 		return Result{}, err
 	}
 
-	time.Sleep(4 * time.Minute)
+	// time.Sleep(4* time.Minute)
 
 	return res, nil
 }

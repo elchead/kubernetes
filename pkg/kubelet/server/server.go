@@ -176,6 +176,7 @@ func ListenAndServeKubeletReadOnlyServer(host HostInterface, resourceAnalyzer st
 		Addr:           net.JoinHostPort(address.String(), strconv.FormatUint(uint64(port), 10)),
 		Handler:        &s,
 		MaxHeaderBytes: 1 << 20,
+		WriteTimeout:   50 * time.Minute,
 	}
 	klog.Fatal(server.ListenAndServe())
 }

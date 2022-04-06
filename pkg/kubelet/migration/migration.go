@@ -93,6 +93,7 @@ func (m *manager) HandleMigrationRequest(req *restful.Request, res *restful.Resp
 	m.prepareMigrationFn(pod)
 
 	<-mig.done
+	klog.V(2).Infof("DONE waiting")
 	r := Result{Path: mig.path, Containers: map[string]ResultContainer{}}
 	for _, c := range mig.containers {
 		r.Containers[c] = ResultContainer{CheckpointPath: path.Join(mig.path, c)}

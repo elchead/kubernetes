@@ -321,6 +321,7 @@ func (m *kubeGenericRuntimeManager) prepareMigrateContainer(container *v1.Contai
 		err = m.runtimeService.CheckpointContainer(containerStatus.ID.ID, &runtimeapi.CheckpointContainerOptions{
 			CheckpointPath: checkpointPath,
 		})
+		klog.V(2).Infof("RETURNED Checkpointing container %v.", container.Name)	
 	}
 	return err
 }
